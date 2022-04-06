@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/sumant7/Hackoverflow-Hackathon/issues"
   },
-  "homepage": "https://github.com/sumant7/Hackoverflow-Hackathon#readme"
+  "homepage": "https://github.com/sumant7/Hackoverflow-Hackathon#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  }
 }
