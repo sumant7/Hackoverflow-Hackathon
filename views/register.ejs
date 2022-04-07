@@ -8,15 +8,20 @@
     <title><%=title%></title>
 </head>
 <body>
-    <span>Sign Up</span>
+    <div class="container">
+    <div class="message"> <%=message%></div>
+    <div class="form">
     <form action="/" method="post">
-        <label for="rusername">Username: </label><br>
-        <input type="text" id="rusername" name="rusername"><br>
-        <label for="rpassword">Password: </label><br>
-        <input type="password" id="rpassword" name="rpassword"><br>
-        <label for="rconfirm">Confirm Password: </label><br>
-        <input type="password" id="rconfirm" name="rconfirm"><br>
+        <span>Sign Up</span>
+        <label for="rusername">Username: </label>
+        <input type="text" id="rusername" name="rusername">
+        <label for="rpassword">Password: </label>
+        <input type="password" id="rpassword" name="rpassword">
+        <label for="rconfirm">Confirm Password: </label>
+        <input type="password" id="rconfirm" name="rconfirm">
         <button type="submit">Sign Up</button>
     </form>
+    </div>
+    </div>
 </body>
 </html>
