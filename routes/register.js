@@ -46,21 +46,34 @@ router.post('/register', async (req, res) => {
 
 //signin
 
-router.post('/login',(req,res)=>{
+router.post('/login',async (req,res)=>{
     const username = req.body.lusername
     const password = req.body.lpassword
-
-    User.findOne({username: username},(err,result)=>{
-        if(username === result.username && password===result.password)
+    const result = await User.findOne({ username: username })
+    // User.findOne({username: username},(err,result)=>{
+    //     if(username === result.username && password===result.password)
+    //     {
+    //         res.render('dashboard',{user: result})
+    //     }
+    //     else
+    //     {
+    //         res.render('register.ejs', { title: "Register", passerr: 'Incorrect Username or Password', usernameerr: '' })
+    //         console.log(err)
+    //     }
+    // })
+    console.log(result)
+        if(result==null)
+        {
+            res.render('register.ejs', { title: "Register", passerr: 'Incorrect Username or Password', usernameerr: '' })
+        }
+        else if(username === result.username && password===result.password)
         {
             res.render('dashboard',{user: result})
         }
         else
         {
             res.render('register.ejs', { title: "Register", passerr: 'Incorrect Username or Password', usernameerr: '' })
-            console.log(err)
         }
-    })
 })
 
 module.exports = router;

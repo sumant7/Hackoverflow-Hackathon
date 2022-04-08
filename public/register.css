@@ -8,10 +8,20 @@ body{
 	font-family: 'Jost', sans-serif;
 	background: linear-gradient(to top, #e44203,  #04ac5df5);
 }
-h1{
+.err
+{
+	border-radius: 10px;
+	width: 345px;
 	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1rem;
+}
+h1{
+	/* position: absolute;
 	margin-left: 5.5%;
-	/* background-color: #fff;
+	background-color: #fff;
 	padding: 10px 40px;	 */
 	font-size: 1rem;
 }
