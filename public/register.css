@@ -9,11 +9,11 @@ body{
 	background: linear-gradient(to top, #e44203,  #04ac5df5);
 }
 h1{
-position: absolute;
-right: 14%;
-top: 5%;
-background-color: #fff;
-padding: 10px 40px;	
+	position: absolute;
+	margin-left: 5.5%;
+	/* background-color: #fff;
+	padding: 10px 40px;	 */
+	font-size: 1rem;
 }
 .main{
 	width: 350px;

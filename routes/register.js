@@ -29,7 +29,7 @@ router.post('/register', async (req, res) => {
                 .catch(err => console.log(err))
             const testuser = await User.findOne({ username: username })
             if (username === testuser.username) {
-                res.render('register.ejs', { title: "", passerr: '', usernameerr: 'Username Already exits' })
+                res.render('register.ejs', { title: "", passerr: '', usernameerr: 'Username Already Exists' })
             }
             else {
                 console.log("Error")
