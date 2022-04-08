@@ -9,16 +9,16 @@
 </head>
 <body>
     <div class="container">
-    <div class="message"> <%=message%></div>
+    <div class="message"> Message</div>
     <div class="form">
     <form action="/" method="post">
         <span>Sign Up</span>
-        <label for="rusername">Username: </label>
-        <input type="text" id="rusername" name="rusername">
-        <label for="rpassword">Password: </label>
-        <input type="password" id="rpassword" name="rpassword">
-        <label for="rconfirm">Confirm Password: </label>
-        <input type="password" id="rconfirm" name="rconfirm">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required>
+        <label for="cpassword">Confirm Password: </label>
+        <input type="password" id="cpassword" name="cpassword" required>
         <button type="submit">Sign Up</button>
     </form>
     </div>
