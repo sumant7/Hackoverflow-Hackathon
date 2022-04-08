@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    
     <div class="container">
         <div class="err">
             <h1 class="passerr">
@@ -21,26 +22,36 @@
                 <%=usernameerr%>
             </h1>
         </div>
-        <div class="register">
-            <form action="/" method="post">
+        <input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<form action="/register" method="post">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="username" placeholder="Username" >
+					<input type="password" name="password" placeholder="Password" >
+					<input type="password" name="cpassword" placeholder="Confirm Password" >
+					<button type="submit">Sign up</button>
+				</form>
+			</div>
+        <!-- <div class="register">
+            <form action="/register" method="post">
                 <header>Sign Up Here</header>
                 <label for="username">Username: </label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" placeholder="Username">
                 <label for="password">Password: </label>
                 <input type="password" id="password" name="password" required>
                 <label for="cpassword">Confirm Password: </label>
                 <input type="password" id="cpassword" name="cpassword" required>
                 <button type="submit" class="btn">Sign Up</button>
             </form>
-        </div>
-        <!-- <div class="login">
+        </div> -->
+        <div class="login">
             <form method="post" action="/login">
                 <label for="chk" aria-hidden="true">Login</label>
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="password" placeholder="Password" required="">
+                <input name="lusername" placeholder="Username" required="">
+                <input type="password" name="lpassword" placeholder="Password" required="">
                 <button>Login</button>
             </form>
-        </div> -->
+        </div>
     </div>
 </body>
 
