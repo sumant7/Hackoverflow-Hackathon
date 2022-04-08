@@ -7,19 +7,19 @@ const userSchema = new Schema({
         type: String, required: true, unique: true
     },
     password:{
-        type: String, default: false
+        type: String
     },
     name:{
-        type: String, required: true
+        type: String, default:""
     },
     freedate: {
-        type: String, required: true
+        type: String,  default:""
     },
     from1: {
-        type: String, required: true, default: ""
+        type: String,  default: ""
     },
     till1: {
-        type: String, required: true, default: ""
+        type: String,  default: ""
     },
     from2: {
         type: String, default: ""
