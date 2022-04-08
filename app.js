@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 
 app.use('/', register);
 
+
 app.listen(port, ()=>{
     console.log("Listening");
 })

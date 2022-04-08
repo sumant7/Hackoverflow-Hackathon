@@ -6,13 +6,12 @@ router.get('/', (req, res) => {
     res.render('register.ejs', { title: "Register", passerr: '', usernameerr: '' })
 })
 
-
 router.post('/', async (req, res) => {
     try {
         const username = req.body.username;
         const password = req.body.password;
         const cpassword = req.body.cpassword;
-
+  
         if (password === cpassword) {
 
             let newUser = new User({
@@ -25,7 +24,7 @@ router.post('/', async (req, res) => {
             })
             newUser.save()
                 .then((item) => {
-                    res.render('login.ejs', { title: "Done", passerr: '', usernameerr: '' })
+                    res.render('login.ejs', { title: "Login"})
                 })
                 .catch(err=> console.log(err))
             const testuser = await User.findOne({ username: username })
