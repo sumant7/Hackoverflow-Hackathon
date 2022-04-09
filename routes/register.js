@@ -26,7 +26,6 @@ router.post('/register', async (req, res) => {
                 password: password,
                 from1: "",
                 till1: "",
-                freedate: "",
                 name: ""
             })
             newUser.save()
@@ -75,7 +74,7 @@ router.post('/login',async (req,res)=>{
         }
         else if(username === result.username && password===result.password)
         {
-            res.render('dashboard',{user: result, mainname: result.username, date: today})
+            res.render('dashboard',{user: result, mainname: result.username, date: today, message:''})
         }
         else
         {
@@ -84,6 +83,60 @@ router.post('/login',async (req,res)=>{
 })
 
 
+
+//adding team member
+router.post('/add', async(req,res)=>{
+    const name= req.body.addname
+    const main = req.body.none
+    const testuser = await User.findOne({ name: name })
+    if(testuser===null)
+    {
+        let newUser = new User({
+            username: name,
+            check: main,
+            name: name
+        })
+        newUser.save()
+        .then((item) => {
+            res.render('dashboard',{ date: today, message:'User Added!',mainname: main})
+        })
+        .catch(err => console.log(err))
+    }
+    else if(testuser.name===name)
+    {
+        res.render('dashboard',{ date: today, message:'User Already Present!',mainname: main})
+    }
+    else
+    {
+        console.log("Error")
+    }
+})
+
+
+
+//deleting user
+router.post('/delete', async(req,res)=>{
+    const dname= req.body.deletename
+    const main = req.body.none
+    const testuser = await User.findOne({ name: dname, check: main })
+    if(testuser===null)
+    {
+        res.render('dashboard',{ date: today, message:'User Does not Exists',mainname: main})
+    }
+    else if(testuser.name===dname)
+    {
+        await User.deleteOne({name: dname, check: main})
+        res.render('dashboard',{ date: today, message:'User Deleted!',mainname: main})
+    }
+    else
+    {
+        console.log("Error")
+    }
+})
+
+
+
+//updating userdetails
 
 
 

@@ -8,24 +8,28 @@
 </head>
 <body>
     <header>
-        <div class="message"></div>
+        <div class="message"><%=message%></div>
         <div><%=mainname%></div>
         <div class="add">
             <form action="/add" method="post">
-            <label for="adduser" >Add User: </label>
-            <input type="text" id="adduser" placeholder="Enter Username" name="addname">
+            <label for="addname" >Add User: </label>
+            <input type="text" id="addname" placeholder="Enter Username" name="addname">
+            <input type="text" class="none" value="<%=mainname%>" name="none">
+            <button type="submit">Add User</button>
             </form>
         </div>
         <div class="delete">
             <form action="/delete" method="post">
-            <label for="deleteuser">Delete User: </label>
-            <input type="text" id="deleteuser" placeholder="Enter Username" name="deletename">
+            <label for="deletename">Delete User: </label>
+            <input type="text" id="deletename" placeholder="Enter Username" name="deletename">
+            <input type="text" class="none" value="<%=mainname%>" name="none">
+            <button type="submit">Delete User</button>
             </form>
         </div>
     </header>
     <div class="main">
         <div class="update">
-            <h1>Upadte Userdetails:</h1>
+            <h1>Update Userdetails:</h1>
             <form action="/update" method="post">
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username" placeholder="Enter Username" required="">
@@ -48,10 +52,12 @@
                     <label for="to3">To: </label>
                     <input type="text" id="to3" name="to3">
                 </div>
+                <button type="submit">Update</button>
+                <input type="text" class="none" value="<%=mainname%>" name="none">
             </form>
         </div>
         <div class="view">
-            <h1>Upadte Userdetails:</h1>
+            <h1>View Userdetails:</h1>
             <form action="/view" method="post">
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username" placeholder="Enter Username" required="">
@@ -67,6 +73,8 @@
                     <div class="from"></div>
                     <div class="to"></div>
                 </div>
+                <button type="submit">View</button>
+                <input type="text" class="none" value="<%=mainname%>" name="none">
             </form>
         </div>
     </div>
