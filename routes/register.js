@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
             })
             newUser.save()
                 .then((item) => {
-                    res.render('login.ejs', { title: "Login" })
+                    res.render('register.ejs', { title: "", passerr: '', usernameerr: 'Sign Up Successful' })
                 })
                 .catch(err => console.log(err))
             const testuser = await User.findOne({ username: username })
@@ -98,13 +98,13 @@ router.post('/add', async(req,res)=>{
         })
         newUser.save()
         .then((item) => {
-            res.render('dashboard',{ date: today, message:'User Added!',mainname: main,show: show})
+            res.render('dashboard',{ date: today, message:'User Added!',mainname: main,show: []})
         })
         .catch(err => console.log(err))
     }
     else if(testuser.name===name)
     {
-        res.render('dashboard',{ date: today, message:'User Already Present!',mainname: main,show: show})
+        res.render('dashboard',{ date: today, message:'User Already Present!',mainname: main,show: []})
     }
     else
     {
@@ -121,12 +121,12 @@ router.post('/delete', async(req,res)=>{
     const testuser = await User.findOne({ name: dname, check: main })
     if(testuser===null)
     {
-        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main,show: show})
+        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main,show: []})
     }
     else if(testuser.name===dname)
     {
         await User.deleteOne({name: dname, check: main})
-        res.render('dashboard',{ date: today, message:'User Deleted!',mainname: main,show: show})
+        res.render('dashboard',{ date: today, message:'User Deleted!',mainname: main,show: []})
     }
     else
     {
@@ -154,7 +154,7 @@ router.post('/update', async(req,res)=>{
     else if(testuser.name===name)
     {
         await User.updateOne({name:name},{ $set: { from1: from1, from2: from2, from3: from3, till1: to1, till2: to2, till3: to3  } })
-        res.render('dashboard',{ date: today, message:'User Details Updated!',mainname: main,show: show})
+        res.render('dashboard',{ date: today, message:'User Details Updated!',mainname: main,show: []})
     }
     else
     {
