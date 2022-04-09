@@ -49,7 +49,7 @@ router.post('/register', async (req, res) => {
 })
 
 
-
+let show=[]
 //signin
 
 router.post('/login',async (req,res)=>{
@@ -74,7 +74,7 @@ router.post('/login',async (req,res)=>{
         }
         else if(username === result.username && password===result.password)
         {
-            res.render('dashboard',{user: result, mainname: result.username, date: today, message:''})
+            res.render('dashboard',{user: result, mainname: result.username, date: today, message:'',show: show})
         }
         else
         {
@@ -98,13 +98,13 @@ router.post('/add', async(req,res)=>{
         })
         newUser.save()
         .then((item) => {
-            res.render('dashboard',{ date: today, message:'User Added!',mainname: main})
+            res.render('dashboard',{ date: today, message:'User Added!',mainname: main,show: show})
         })
         .catch(err => console.log(err))
     }
     else if(testuser.name===name)
     {
-        res.render('dashboard',{ date: today, message:'User Already Present!',mainname: main})
+        res.render('dashboard',{ date: today, message:'User Already Present!',mainname: main,show: show})
     }
     else
     {
@@ -121,12 +121,12 @@ router.post('/delete', async(req,res)=>{
     const testuser = await User.findOne({ name: dname, check: main })
     if(testuser===null)
     {
-        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main})
+        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main,show: show})
     }
     else if(testuser.name===dname)
     {
         await User.deleteOne({name: dname, check: main})
-        res.render('dashboard',{ date: today, message:'User Deleted!',mainname: main})
+        res.render('dashboard',{ date: today, message:'User Deleted!',mainname: main,show: show})
     }
     else
     {
@@ -149,12 +149,12 @@ router.post('/update', async(req,res)=>{
     const testuser = await User.findOne({ name: name, check: main })
     if(testuser===null)
     {
-        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main})
+        res.render('dashboard',{ date: today, message:'User Does not Exist, Add the User First!',mainname: main})
     }
     else if(testuser.name===name)
     {
         await User.updateOne({name:name},{ $set: { from1: from1, from2: from2, from3: from3, till1: to1, till2: to2, till3: to3  } })
-        res.render('dashboard',{ date: today, message:'User Updated!',mainname: main})
+        res.render('dashboard',{ date: today, message:'User Details Updated!',mainname: main,show: show})
     }
     else
     {
@@ -163,5 +163,30 @@ router.post('/update', async(req,res)=>{
 })
 
 
+//viewing the details
+router.post('/view', async(req,res)=>{
+    const username= req.body.username
+    const main = req.body.none
+    const testuser = await User.findOne({ name: username, check: main })
+    if(testuser===null)
+    {
+        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main,show:[]})
+    }
+    else if(testuser.name===username)
+    {
+        show.push(username)
+        show.push(testuser.from1)
+        show.push(testuser.till1)
+        show.push(testuser.from2)
+        show.push(testuser.till2)
+        show.push(testuser.from3)
+        show.push(testuser.till3)
+        res.render('dashboard',{ date: today, message:'User Deleted!',mainname: main,show:show})
+    }
+    else
+    {
+        console.log("Error")
+    }
+})
 
 module.exports = router;

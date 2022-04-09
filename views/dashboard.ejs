@@ -61,21 +61,22 @@
             <form action="/view" method="post">
                 <label for="username">Username: </label>
                 <input type="text" id="username" name="username" placeholder="Enter Username" required="">
-                <div class="time">
-                    <div class="from"></div>
-                    <div class="to"></div>
-                </div>
-                <div class="time">
-                    <div class="from"></div>
-                    <div class="to"></div>
-                </div>
-                <div class="time">
-                    <div class="from"></div>
-                    <div class="to"></div>
-                </div>
                 <button type="submit">View</button>
                 <input type="text" class="none" value="<%=mainname%>" name="none">
             </form>
+            <span><%=show[0]%></span>
+            <div class="time">
+                <div class="from"><%=show[1]%></div>
+                <div class="to"><%=show[2]%></div>
+            </div>
+            <div class="time">
+                <div class="from"><%=show[3]%></div>
+                <div class="to"><%=show[4]%></div>
+            </div>
+            <div class="time">
+                <div class="from"><%=show[5]%></div>
+                <div class="to"><%=show[6]%></div>
+            </div>
         </div>
     </div>
     <footer>
