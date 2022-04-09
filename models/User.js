@@ -12,9 +12,6 @@ const userSchema = new Schema({
     name:{
         type: String, default:""
     },
-    freedate: {
-        type: String,  default:""
-    },
     from1: {
         type: String,  default: ""
     },

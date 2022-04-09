@@ -7,6 +7,72 @@
     <title>Document</title>
 </head>
 <body>
-    <%=user%>
+    <header>
+        <div class="message"></div>
+        <div><%=mainname%></div>
+        <div class="add">
+            <form action="/add" method="post">
+            <label for="adduser" >Add User: </label>
+            <input type="text" id="adduser" placeholder="Enter Username" name="addname">
+            </form>
+        </div>
+        <div class="delete">
+            <form action="/delete" method="post">
+            <label for="deleteuser">Delete User: </label>
+            <input type="text" id="deleteuser" placeholder="Enter Username" name="deletename">
+            </form>
+        </div>
+    </header>
+    <div class="main">
+        <div class="update">
+            <h1>Upadte Userdetails:</h1>
+            <form action="/update" method="post">
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required="">
+                <span>Enter Free Time Slots</span>
+                <div class="time">
+                    <label for="from1">From: </label>
+                    <input type="text" id="from1" name="from1">
+                    <label for="to1">To: </label>
+                    <input type="text" id="to1" name="to1">
+                </div>
+                <div class="time">
+                    <label for="from2">From: </label>
+                    <input type="text" id="from2" name="from2">
+                    <label for="to2">To: </label>
+                    <input type="text" id="to2" name="to2">
+                </div>
+                <div class="time">
+                    <label for="from3">From: </label>
+                    <input type="text" id="from3" name="from3">
+                    <label for="to3">To: </label>
+                    <input type="text" id="to3" name="to3">
+                </div>
+            </form>
+        </div>
+        <div class="view">
+            <h1>Upadte Userdetails:</h1>
+            <form action="/view" method="post">
+                <label for="username">Username: </label>
+                <input type="text" id="username" name="username" placeholder="Enter Username" required="">
+                <div class="time">
+                    <div class="from"></div>
+                    <div class="to"></div>
+                </div>
+                <div class="time">
+                    <div class="from"></div>
+                    <div class="to"></div>
+                </div>
+                <div class="time">
+                    <div class="from"></div>
+                    <div class="to"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <span>Today: <%=date%></span>
+    </footer>
+
 </body>
 </html>

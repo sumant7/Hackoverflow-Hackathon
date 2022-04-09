@@ -6,6 +6,13 @@ router.get('/', (req, res) => {
     res.render('register.ejs', { title: "Register", passerr: '', usernameerr: '' })
 })
 
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+today = mm + '/' + dd + '/' + yyyy;
+
 router.post('/register', async (req, res) => {
     try {
         const username = req.body.username;
@@ -68,12 +75,16 @@ router.post('/login',async (req,res)=>{
         }
         else if(username === result.username && password===result.password)
         {
-            res.render('dashboard',{user: result})
+            res.render('dashboard',{user: result, mainname: result.username, date: today})
         }
         else
         {
             res.render('register.ejs', { title: "Register", passerr: 'Incorrect Username or Password', usernameerr: '' })
         }
 })
+
+
+
+
 
 module.exports = router;
