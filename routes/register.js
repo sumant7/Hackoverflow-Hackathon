@@ -121,7 +121,7 @@ router.post('/delete', async(req,res)=>{
     const testuser = await User.findOne({ name: dname, check: main })
     if(testuser===null)
     {
-        res.render('dashboard',{ date: today, message:'User Does not Exists',mainname: main})
+        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main})
     }
     else if(testuser.name===dname)
     {
@@ -137,6 +137,30 @@ router.post('/delete', async(req,res)=>{
 
 
 //updating userdetails
+router.post('/update', async(req,res)=>{
+    const name= req.body.username
+    const from1= req.body.from1
+    const to1= req.body.to1
+    const from2= req.body.from2
+    const to2= req.body.to2
+    const from3= req.body.from3
+    const to3= req.body.to3
+    const main = req.body.none
+    const testuser = await User.findOne({ name: name, check: main })
+    if(testuser===null)
+    {
+        res.render('dashboard',{ date: today, message:'User Does not Exist',mainname: main})
+    }
+    else if(testuser.name===name)
+    {
+        await User.updateOne({name:name},{ $set: { from1: from1, from2: from2, from3: from3, till1: to1, till2: to2, till3: to3  } })
+        res.render('dashboard',{ date: today, message:'User Updated!',mainname: main})
+    }
+    else
+    {
+        console.log("Error")
+    }
+})
 
 
 
