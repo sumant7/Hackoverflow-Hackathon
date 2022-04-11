@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    <div class="container-fluid">
+            <div class="background">
     <header>
-        <div class="message"><%=message%></div>
-        <div><%=mainname%></div>
+        <div class="content">
+            <div class="name"><%=mainname%></div>
+            <div class="message"><%=message%></div>
+        </div>
+        <div class="cube"></div>
         <div class="add">
             <form action="/add" method="post">
             <label for="addname" >Add User: </label>
@@ -19,6 +24,7 @@
             <button type="submit">Add User</button>
             </form>
         </div>
+        <div class="cube"></div>
         <div class="delete">
             <form action="/delete" method="post">
             <label for="deletename">Delete User: </label>
@@ -47,6 +53,7 @@
                     <label for="to2">To: </label>
                     <input type="text" id="to2" name="to2">
                 </div>
+                <div class="cube"></div>
                 <div class="time">
                     <label for="from3">From: </label>
                     <input type="text" id="from3" name="from3">
@@ -65,24 +72,34 @@
                 <button type="submit">View</button>
                 <input type="text" class="none" value="<%=mainname%>" name="none">
             </form>
-            <span><%=show[0]%></span>
+            <span><%=show[0]%>'s free slots are:</span>
             <div class="time">
+                From:
                 <div class="from"><%=show[1]%></div>
+                To:
                 <div class="to"><%=show[2]%></div>
             </div>
+            <div class="cube"></div>
             <div class="time">
+                From:
                 <div class="from"><%=show[3]%></div>
+                To:
                 <div class="to"><%=show[4]%></div>
             </div>
             <div class="time">
+                From:
                 <div class="from"><%=show[5]%></div>
+                To:
                 <div class="to"><%=show[6]%></div>
             </div>
         </div>
+        <div class="cube"></div>
     </div>
     <footer>
         <span>Today: <%=date%></span>
     </footer>
+</div>
+</div>
 
 </body>
 </html>
