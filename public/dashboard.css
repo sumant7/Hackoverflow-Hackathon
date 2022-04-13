@@ -261,3 +261,58 @@ footer{
     justify-content: center;
     align-items: center;
 }
+
+
+/*media queries*/
+@media screen and (max-width: 880px) {
+  *{
+    overflow: auto;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  .container-fluid{
+    height: auto;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+  .background{
+    height: auto;
+    overflow: auto;
+    scroll-behavior: smooth;
+  }
+  .content{
+    flex-direction: row;
+    height: auto;
+    width: 100vw;
+  }
+  header{
+    display: grid;
+    grid-template-columns: 100%;
+    height: auto;
+    width: 100vw;
+  }
+  .main{
+    flex-direction: column;
+    width: auto;
+    height: auto;
+  }
+  .name{
+    height: auto;
+    margin-right: 100px;
+  }
+  .message{
+    height: auto;
+    width: auto;
+  }
+  .update{
+    width: 100vw;
+    height: auto;
+    margin: 20px 0px;
+  }
+  .view{
+    width: 100vw;
+    height: auto;
+    margin: 20px 0px;
+  }
+}

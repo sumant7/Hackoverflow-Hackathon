@@ -149,7 +149,7 @@ router.post('/update', async(req,res)=>{
     const testuser = await User.findOne({ name: name, check: main })
     if(testuser===null)
     {
-        res.render('dashboard',{ date: today, message:'User Does not Exist, Add the User First!',mainname: main})
+        res.render('dashboard',{ date: today, message:'User Does not Exist, Add the User First!',mainname: main,show: []})
     }
     else if(testuser.name===name)
     {
