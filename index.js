@@ -18,7 +18,7 @@ mongoose.connect(db,
 
 
 
-const port = process.env.port || 3000; //process.env.port for hosting
+const port = process.env.PORT || 3000; //process.env.port for hosting
 
 app.set("view engine","ejs");
 
