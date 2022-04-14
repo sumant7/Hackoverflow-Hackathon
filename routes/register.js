@@ -14,14 +14,13 @@ var yyyy = today.getFullYear();
 today = dd + '/' + mm + '/' + yyyy;
 
 router.post('/register', async (req, res) => {
-    try {
         const username = req.body.username;
         const password = req.body.password;
         const cpassword = req.body.cpassword;
-
+        console.log("data taken")
         if (password === cpassword) {
             const testuser = await User.findOne({ username: username })
-            if (username === testuser.username) {
+            if (testuser!=null && username === testuser.username ) {
                 res.render('register.ejs', { title: "", passerr: '', usernameerr: 'Username Already Exists' })
             }
             else {
@@ -44,9 +43,6 @@ router.post('/register', async (req, res) => {
         } else {
             res.render('register.ejs', { title: "Register", passerr: 'Passwords not Matching', usernameerr: '' })
         }
-    } catch (err) {
-        res.render('register.ejs', { title: "Register", passerr: 'Succesful', usernameerr: '' })
-    }
 })
 
 
@@ -82,7 +78,7 @@ router.post('/add', async(req,res)=>{
     if(testuser===null)
     {
         let newUser = new User({
-            username: name,
+            // username: name,
             check: main,
             name: name
         })
