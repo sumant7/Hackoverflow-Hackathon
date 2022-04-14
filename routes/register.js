@@ -56,17 +56,6 @@ router.post('/login',async (req,res)=>{
     const username = req.body.lusername
     const password = req.body.lpassword
     const result = await User.findOne({ username: username })
-    // User.findOne({username: username},(err,result)=>{
-    //     if(username === result.username && password===result.password)
-    //     {
-    //         res.render('dashboard',{user: result})
-    //     }
-    //     else
-    //     {
-    //         res.render('register.ejs', { title: "Register", passerr: 'Incorrect Username or Password', usernameerr: '' })
-    //         console.log(err)
-    //     }
-    // })
     console.log(result)
         if(result==null)
         {
@@ -195,7 +184,43 @@ router.post('/view', async(req,res)=>{
 router.post('/todo',async(req,res)=>{
     const main = req.body.none
     const testuser = await User.findOne({ username: main })
-    res.render('todo.ejs',{mainname: main}) 
+    const task = testuser.todo
+    res.render('todo.ejs',{mainname: main, list: task,message:""}) 
 })
 
+
+
+//adding new task
+router.post('/todo/add',async(req,res)=>{
+    const todo= req.body.add
+    const none= req.body.none
+    if(todo==="")
+    {
+        const testuser = await User.findOne({ username: none })
+        const task = testuser.todo
+        res.render('todo.ejs',{mainname: none, list: task,message:""})
+    }
+    else
+    {
+        await User.updateOne({username:none},{ $push: { todo: todo }})
+        const testuser = await User.findOne({ username: none })
+        const task = testuser.todo
+        res.render('todo.ejs',{mainname: none, list: task,message:"Added!"})
+    }
+    
+})
 module.exports = router;
+
+
+
+
+//deleteing item
+router.post("/todo/delete",async(req,res)=>{
+    const i= req.body.index
+    const none= req.body.none
+    const testuser = await User.findOne({ username: none })
+    const task = testuser.todo
+    var r = task.splice(i,1)
+    await User.updateOne({username:none},{ $set: { todo: task}})
+    res.render('todo.ejs',{mainname: none, list: task,message:"Deleted!"})
+})

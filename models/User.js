@@ -34,7 +34,7 @@ const userSchema = new Schema({
         type: String, default: ""
     },
     todo:{
-        type: String, 
+        type: Array, default: []
     }
 })
 
