@@ -189,4 +189,13 @@ router.post('/view', async(req,res)=>{
     }
 })
 
+
+
+//tasks section
+router.post('/todo',async(req,res)=>{
+    const main = req.body.none
+    const testuser = await User.findOne({ username: main })
+    res.render('todo.ejs',{mainname: main}) 
+})
+
 module.exports = router;
