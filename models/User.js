@@ -32,6 +32,9 @@ const userSchema = new Schema({
     },
     till3: {
         type: String, default: ""
+    },
+    task:{
+        type: Array, default:[]
     }
 })
 

@@ -267,6 +267,7 @@ footer{
 @media screen and (max-width: 880px) {
   *{
     overflow: auto;
+    box-sizing: border-box;
   }
   html {
     scroll-behavior: smooth;
@@ -275,11 +276,13 @@ footer{
     height: auto;
     overflow: auto;
     scroll-behavior: smooth;
+    width: 100vw;
   }
   .background{
     height: auto;
     overflow: auto;
     scroll-behavior: smooth;
+    overflow: hidden;
   }
   .content{
     flex-direction: row;
