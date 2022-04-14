@@ -20,7 +20,13 @@ router.post('/register', async (req, res) => {
         const cpassword = req.body.cpassword;
 
         if (password === cpassword) {
-
+            const testuser = await User.findOne({ username: username })
+            if (username === testuser.username) {
+                res.render('register.ejs', { title: "", passerr: '', usernameerr: 'Username Already Exists' })
+            }
+            else {
+                console.log("Error")
+            
             let newUser = new User({
                 username: username,
                 password: password,
@@ -33,18 +39,13 @@ router.post('/register', async (req, res) => {
                     res.render('register.ejs', { title: "", passerr: '', usernameerr: 'Sign Up Successful' })
                 })
                 .catch(err => console.log(err))
-            const testuser = await User.findOne({ username: username })
-            if (username === testuser.username) {
-                res.render('register.ejs', { title: "", passerr: '', usernameerr: 'Username Already Exists' })
             }
-            else {
-                console.log("Error")
-            }
+            
         } else {
             res.render('register.ejs', { title: "Register", passerr: 'Passwords not Matching', usernameerr: '' })
         }
     } catch (err) {
-        res.render('register.ejs', { title: "Error", passerr: '', usernameerr: '' })
+        res.render('register.ejs', { title: "Register", passerr: 'Succesful', usernameerr: '' })
     }
 })
 
